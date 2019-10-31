@@ -28,6 +28,11 @@ public class UserRepositoryTest {
   }
 
   @Test
+  public void listUsersWithMap() {
+    System.err.println(userRepository.listUsers("0"));
+  }
+
+  @Test
   public void listUsersWithOrderAndPage() {
     Sort sort = Sort.by("userId").descending();
     Pageable pageable = PageRequest.of(0, 1, sort);
@@ -38,6 +43,11 @@ public class UserRepositoryTest {
   @Test
   public void getUserByUsername() {
     System.err.println(userRepository.getUserByUsername("root"));
+  }
+
+  @Test
+  public void getUserByUserId() {
+    System.err.println(userRepository.getUserByUserId(1));
   }
 
   @Test
