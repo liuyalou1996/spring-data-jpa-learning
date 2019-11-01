@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.iboxpay</groupId>
-	<artifactId>spring-boot-learning</artifactId>
+	<artifactId>spring-data-jpa-learning</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>spring-data-jpa-learning</name>
 	<description>Spring data jpa learning for Spring Boot</description>
