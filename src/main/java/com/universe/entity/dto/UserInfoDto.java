@@ -1,11 +1,23 @@
-package com.universe.entity;
+package com.universe.entity.dto;
 
-public class UserDuplicate {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class UserInfoDto {
+
+  @Id
+  @Column(name = "user_id")
+  private Integer userId;
+
+  @Column
   private String username;
+
+  @Column
   private String password;
 
-  public UserDuplicate(String username, String password) {
+  public UserInfoDto(String username, String password) {
     this.username = username;
     this.password = password;
   }
@@ -28,7 +40,7 @@ public class UserDuplicate {
 
   @Override
   public String toString() {
-    return "UserDuplicate [username=" + username + ", password=" + password + "]";
+    return "UserInfo [userId=" + userId + ", username=" + username + ", password=" + password + "]";
   }
 
 }

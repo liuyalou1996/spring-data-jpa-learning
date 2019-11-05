@@ -1,5 +1,8 @@
 package com.universe.test;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import com.universe.Application;
 import com.universe.entity.User;
 import com.universe.repository.UserRepository;
 import com.universe.repository.spec.UserSpecificationFactory;
+import com.universe.util.JsonUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -53,6 +57,12 @@ public class UserRepositoryTest {
   @Test
   public void getNormalUser() {
     System.err.println(userRepository.findAll(UserSpecificationFactory.isUserStatusNormal()));
+  }
+
+  @Test
+  public void listUsersWithNativeSql() {
+    List<Map<String, Object>> list = userRepository.listUsersWithNativeSql();
+    list.forEach(map -> System.err.println(JsonUtils.toJsonString(map)));
   }
 
 }
