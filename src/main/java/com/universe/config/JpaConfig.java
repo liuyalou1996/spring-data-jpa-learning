@@ -42,6 +42,8 @@ public class JpaConfig {
     // 设置命名策略，5.0以后不再起作用
     // properties.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
     properties.put("hibernate.hbm2ddl.auto", "none");
+    // 用Spring物理命名策略，如实体User转物理表名user，实体属性userId转物理列名user_id，但注解优先配置
+    properties.put("hibernate.physical_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy");
 
     LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
     factoryBean.setJpaVendorAdapter(vendorAdapter);
