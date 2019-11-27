@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.universe.entity.User;
 import com.universe.entity.dto.UserInfoDto;
@@ -36,4 +38,9 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
    */
   @Query(value = "select user_id as userId,username,password from tbl_user", nativeQuery = true)
   List<Map<String, Object>> listUsersWithNativeSql();
+  
+  @Transactional
+  @Modifying
+  @Query("delete from User u where u.userId = ?1")
+  void deleteByUserId(Integer userId);
 }

@@ -65,4 +65,9 @@ public class UserRepositoryTest {
     list.forEach(map -> System.err.println(JsonUtils.toJsonString(map)));
   }
 
+  @Test
+  public void deleteUserByUserId() {
+    userRepository.deleteByUserId(100);
+  }
+
 }
