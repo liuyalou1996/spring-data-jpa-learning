@@ -1,8 +1,10 @@
 package com.universe.test;
 
-import java.util.List;
-import java.util.Map;
-
+import com.universe.Application;
+import com.universe.entity.User;
+import com.universe.repository.UserRepository;
+import com.universe.repository.spec.UserSpecificationFactory;
+import com.universe.util.JsonUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.universe.Application;
-import com.universe.entity.User;
-import com.universe.repository.UserRepository;
-import com.universe.repository.spec.UserSpecificationFactory;
-import com.universe.util.JsonUtils;
+import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -42,6 +41,11 @@ public class UserRepositoryTest {
     Pageable pageable = PageRequest.of(0, 1, sort);
     Page<User> page = userRepository.findAll(pageable);
     System.err.println(page.getContent());
+  }
+
+  @Test
+  public void countNormalUser() {
+    System.err.println(userRepository.countNormalUsesr());
   }
 
   @Test

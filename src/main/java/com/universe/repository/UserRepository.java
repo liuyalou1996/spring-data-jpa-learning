@@ -17,6 +17,8 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
   @Query("select u from User u where u.username = ?1")
   User getUserByUsername(String username);
 
+  @Query("select count(*) from User u where u.status = '1' ")
+  Long countNormalUsesr();
   /**
    * 使用map接收时必须指定别名，否则返回的key从0开始
    * @param status
